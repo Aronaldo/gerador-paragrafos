@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de parágrafos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            padding: 0 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+        h1 {
+            color: #ffb064;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+        
+        form,
+        section {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid salmon;
+            border-radius: 5px;
+        }
+        
+        form input {
+            width: 100%;
+            height: 30px;
+            padding: 10px;
+            border: 1px solid salmon;
+        }
+        
+        form button {
+            display: block;
+            width: 50%;
+            height: 30px;
+            margin: 0 auto;
+            margin-top: 20px;
+            background-color: aquamarine
+        }
+        
+        section {
+            margin-top: 20px;
+        }
+        
+        section p {
+            margin-bottom: 10px;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+            border: 2px dotted salmon;
+            border-radius: 5px;
+            transition: box-shadow .3s;
+        }
+        
+        section p:nth-child(even) {
+            border-color: slateblue;
+        }
+        
+        section p:hover {
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, .3);
+        }
+        
+        @media screen and (min-width: 992px) {
+            #container {
+                max-width: 992px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Programa gerador de parágrafos</h1>
+        <p>Quantos parágrafos você quer gerar?</p>
+
+        <form action="">
+            <input type="number" id="qtd" placeholder="informe a quantidade">
+            <button onclick="gerarParagrafos()">Gerar Parágrafos</button>
+        </form>
+
+        <section id="paragrafos"></section>
+    </div>
+    <script>
+        function gerarParagrafos() {
+            event.preventDefault();//para o submit do form
+            let qtd = parseInt(document.getElementById('qtd').value);
+
+            if(qtd > 0){// validação ok
+                //alert(qtd);
+
+                let template = "";
+                    for (let i = 1; i <= qtd; i++) {
+                    template += "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem esse eius molestiae, perferendis nobis libero voluptatum, aut numquam adipisci, quia minus nam tempora maiores impedit dolorem facilis. Eligendi, qui.</p>";
+                    }
+                
+              
+                //injeta o html na section#paragrafos
+                document.getElementById('paragrafos').innerHTML = template;
+
+            }else {
+                alert('Quantidade de parágrafos insuficiente');
+            }
+        }
+    </script>
+</body>
+
+</html>
